@@ -18,8 +18,8 @@ def load_cedict(load_to_mongo=False):
         eng = line[line.find('/') + 1:line.rfind('/')]
 
         word = {'simplified': simp,
-                'traditional': trad, 
-                'english': eng, 
+                'traditional': trad,
+                'english': eng,
                 'pinyin': pinyin}
 
         new_words.append(word)
@@ -31,12 +31,12 @@ def load_cedict(load_to_mongo=False):
         db = client['cedict']
         words = db['entries']
         words.insert(new_words)
-    
+
     return new_words
 
 if __name__ == '__main__':
-    print "Loading words..."
+    print("Loading words...")
 
     words = load_cedict(load_to_mongo=False)
 
-    print "Done! Loaded %d words." % len(words)
+    print("Done! Loaded %d words." % len(words))
